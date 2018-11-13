@@ -1,10 +1,16 @@
 Rails.application.routes.draw do
 
-  devise_for :users, controllers: { sessions: 'users/sessions' }
+  devise_for :users, path: 'users', controllers: { 
+    sessions: "users/sessions",
+    registrations: "users/registrations"
+  }
+  devise_for :admins, path: 'admins', controllers: { 
+    sessions: "admins/sessions",
+    registrations: "admins/registrations" 
+  }
 
-  devise_for :admins, controllers: { sessions: 'admins/sessions' }
 
-  root "home_page#index"
+  root 'home_page#index'
 
   resources :home_page, only: [:index]
   resources :articles do
