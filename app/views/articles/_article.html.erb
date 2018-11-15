@@ -1,0 +1,22 @@
+<div class="col-md-4">
+  <div class="card mb-4 box-shadow">
+    <div class="card-header">
+      <%= article.title %>
+    </div>
+    <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" src="http://1.bp.blogspot.com/-qiSCRu8Q2fk/US91tLesfHI/AAAAAAAAOxc/QyMzW_zDHmE/s1600/How-to-Create-Short-URLs-For-Your-Blog-Using-Google-Shortener.png" data-holder-rendered="true" style="height: 225px; width: 100%; display: block;">
+    <div class="card-body d-flex flex-column">
+      <h6 class="card-title">Создано: <%= article.created_at %></h6>
+      <p class="card-text"><%= article.text %></p>
+      <div class="btn-group">
+        <%= link_to 'View details', article_path(article), class: "btn btn-outline-primary" %>
+        <% if admin_signed_in? %>
+          <%= link_to 'Edit', edit_article_path(article), 
+              class: "btn btn-block btn-outline-success" %>
+          <%= link_to 'Destroy', article_path(article), 
+              class: "btn btn-outline-danger", method: :delete,
+              data: { confirm: 'Are you sure?' } %>
+        <% end %>
+        </div>
+    </div>
+  </div>
+</div>
