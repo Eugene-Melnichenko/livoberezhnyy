@@ -1,20 +1,33 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_article
+
+  def index
+    redirect_to @article
+  end
+
   def create
-    @article = Article.find(params[:article_id])
     @comment = @article.comments.create(comment_params)
-    redirect_to article_path(@article)
+    if @comment.errors.any?
+      render "articles/show"
+    else
+    redirect_to @article
+    end
   end
 
   def destroy
-    @article = Article.find(params[:article_id])
     @comment = @article.comments.find(params[:id])
     @comment.destroy
-    redirect_to article_path(@article)
+    redirect_to @article
   end
 
   private
-    def comment_params
-      params.require(:comment).permit(:commenter)
-    end
+
+  def set_article
+    @article = Article.find(params[:article_id])
+  end
+
+  def comment_params
+    params.require(:comment).permit(:commenter)
+  end
 end
