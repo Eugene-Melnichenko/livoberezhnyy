@@ -1,11 +1,11 @@
-<nav class="navbar navbar-expand-md sticky-top navbar-dark navbar-style">
+<nav class="navbar navbar-expand-md navbar-dark fixed-top navbar-style">
   <div class="container">
     <%= link_to 'Comoany', root_path, class: "navbar-brand" %>
     <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="navbar-collapse collapse" id="navbarsExample04" style="">
+    <div class="navbar-collapse collapse" id="navbarsExample04">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
           <%= link_to 'Home', home_page_index_path, class: "nav-link" %>
@@ -17,9 +17,13 @@
 
       <ul class="nav navbar-nav pull-right">
         <li class="active">
-          <%= link_to 'SIGN IN / SIGN UP', new_user_session_path, class: "btn btn-outline-light" %>
+          <% if user_signed_in? %>
+            <%= link_to user_profile, edit_user_registration_path, class: "btn btn-outline-light" %>
+            <%= link_to 'Exit', destroy_user_session_path, class: "btn btn-outline-light", :method => :delete %>
+          <% end %>
         </li>
       </ul> 
     </div>
   </div>
 </nav>
+<br>

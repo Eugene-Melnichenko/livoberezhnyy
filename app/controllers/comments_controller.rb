@@ -7,11 +7,11 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @comment = @article.comments.create(comment_params)
-    if @comment.errors.any?
-      render "articles/show"
+    @comment = @article.comments.new(comment_params)
+    if @comment.save
+      redirect_to @article
     else
-    redirect_to @article
+      redirect_to @article
     end
   end
 

@@ -1,13 +1,19 @@
-<div class="navbar-fixed-bottom row-fluid footer-style">
-  <div class="navbar-inner">
-    <div class="container">
-      <p class="float-right">
-        <%= link_to 'Back to top' %>
-      </p>
-      <p> © 2018 Company, Inc.
-      · <%= link_to 'Home', home_page_index_path %> 
-      · <%= link_to 'Articles', articles_path %>
-      </p>
+<br>
+<nav class="navbar navbar-expand-md fixed-bottom navbar-light bg-light">
+  <div class="container">
+    <a class="navbar-brand" href="#">Navbar w/ text</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+      </ul>
+      <span class="navbar-text">
+        Ruby on rails
+      </span>
     </div>
   </div>
-</div>
+</nav>
