@@ -19,7 +19,7 @@ class ArticlesController < ApplicationController
   def create
     @article = Article.new(article_params)
     if @article.save
-      flash[:notice] = "Create article"
+      flash[:primary] = "Create article"
       redirect_to @article
     else
       render 'new'
@@ -28,6 +28,7 @@ class ArticlesController < ApplicationController
 
   def update
     if @article.update(article_params)
+      flash[:primary] = "Update article"
       redirect_to @article
     else
       render 'edit'
@@ -35,7 +36,11 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
-    @article.destroy
+    if @article.destroy
+      flash[:primary] = "Destroy article(true)"
+    else
+      flash[:danger] = "Destroy article(false)"
+    end
     redirect_to articles_path
   end
 
