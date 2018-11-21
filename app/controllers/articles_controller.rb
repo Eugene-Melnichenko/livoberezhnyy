@@ -17,7 +17,7 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    @article = Article.new(article_params)
+    @article = current_admin.articles.new(article_params)
     if @article.save
       flash[:primary] = "Create article"
       redirect_to @article

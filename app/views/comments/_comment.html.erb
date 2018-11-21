@@ -3,7 +3,7 @@
   <%= comment.commenter %>
 </p>
 
-<% if user_signed_in? %>
+<% if current_user == comment.user || admin_signed_in?  %>
 <p>
   <%= link_to 'Destroy Comment', [comment.article, comment],
                method: :delete,
