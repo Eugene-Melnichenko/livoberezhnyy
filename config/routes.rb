@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  root 'home_page#index'
+
   devise_for :users, path: 'users', controllers: { 
     sessions: "users/sessions",
     registrations: "users/registrations"
@@ -9,8 +11,10 @@ Rails.application.routes.draw do
     registrations: "admins/registrations" 
   }
 
+  namespace :admins do
+    resources :users
+  end
 
-  root 'home_page#index'
 
   resources :home_page, only: [:index]
   resources :articles do
