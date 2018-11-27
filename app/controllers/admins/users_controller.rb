@@ -3,7 +3,7 @@ class Admins::UsersController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @users = User.all
+    @users = User.order(created_at: :desc).paginate(:page => params[:page], per_page: 5)
   end
 
   def destroy
