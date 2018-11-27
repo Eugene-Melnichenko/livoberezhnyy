@@ -6,6 +6,7 @@
       <th scope="col">Last_name</th>
       <th scope="col">Email</th>
       <th scope="col">id</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -15,6 +16,8 @@
         <td><%= user.first_name %></td>
         <td><%= user.last_name %></td>
         <td><%= user.created_at %></td>
+        <td><%= link_to "Destroy", admins_user_path(user), method: :delete, data: { confirm: "You sure?" } %>
+        </td>
       </tr>
     <% end %>
   </tbody>

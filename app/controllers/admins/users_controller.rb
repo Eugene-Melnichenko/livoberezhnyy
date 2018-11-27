@@ -6,4 +6,14 @@ class Admins::UsersController < ApplicationController
     @users = User.all
   end
 
+  def destroy
+    @user = User.find(params[:id])
+    if @user.destroy
+      flash[:primary] = "User deleted(true)"
+    else
+      flash[:danger] = "User deleted(false)"
+    end
+      redirect_to root_url
+  end
+
 end
