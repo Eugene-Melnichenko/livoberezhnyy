@@ -8,6 +8,8 @@
   <%= @article.title %>
 </p>
 
+<%= image_tag(@article.image_url.to_s) if @article.image? %>
+
 <p>
   <strong>Text:</strong>
   <%= @article.text %>
