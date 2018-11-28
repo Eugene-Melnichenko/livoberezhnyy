@@ -4,6 +4,5 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :validatable, :trackable
 
-  has_many :comments
   validates :first_name, :last_name, length: { maximum: 20 }
 end

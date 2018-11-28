@@ -1,9 +1,0 @@
-<%= form_with(model: [ @article, @article.comments.build ], local: true) do |form| %>
-
-  <div class="form-group">
-    <%= form.label :commenter %>
-    <%= form.text_field :commenter, class: "form-control", placeholder:"Enter text..." %>
-  </div>
-  <%= form.submit class: "btn btn-primary" %>
-  
-<% end %>

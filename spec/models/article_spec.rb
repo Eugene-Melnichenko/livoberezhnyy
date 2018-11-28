@@ -9,7 +9,6 @@ RSpec.describe Article, type: :model do
   it { should respond_to(:text) }
 
   describe "Associations" do
-    it { should have_many(:comments) }
     it { should belong_to(:admin) }
   end
 

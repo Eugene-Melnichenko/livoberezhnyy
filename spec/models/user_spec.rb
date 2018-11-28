@@ -11,7 +11,6 @@ RSpec.describe User, type: :model do
   it { should respond_to(:last_name) }
 
   describe "Associations" do
-    it { should have_many(:comments) }
   end
 
   describe "Validations" do
