@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  root 'home_page#index'
-
   devise_for :users, path: 'users', controllers: { 
     sessions: "users/sessions",
     registrations: "users/registrations"
@@ -11,15 +9,20 @@ Rails.application.routes.draw do
     registrations: "admins/registrations" 
   }
 
-  namespace :admins do
-    resources :users
+  authenticated :admin do
+    root 'admins/dashboard#index', as: :authenticated_root
   end
 
+  root 'home_page#index'
+
+  namespace :admins do
+    get 'dashboard/index'
+    resources :services
+    resources :users, only: [:destroy]
+  end
 
   resources :home_page, only: [:index]
-  resources :articles do
-    resources :comments
-  end
+  resources :articles
 
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
 
