@@ -20,7 +20,7 @@ class Admins::ServicesController < ApplicationController
   def create
     @service = Service.new(service_params)
     if @service.save
-      flash[:primary] = "Create service"
+      flash[:primary] = "Послуга успіно додана."
       redirect_to root_path
     else
       render 'new'
@@ -29,7 +29,7 @@ class Admins::ServicesController < ApplicationController
 
   def update
     if @service.update(service_params)
-      flash[:primary] = "Update service"
+      flash[:primary] = "Послуга успіно оновленна."
       redirect_to root_path
     else
       render 'edit'
@@ -38,9 +38,9 @@ class Admins::ServicesController < ApplicationController
 
   def destroy
     if @service.destroy
-      flash[:primary] = "Servise deleted(true)"
+      flash[:primary] = "Послуга успішно видалена."
     else
-      flash[:danger] = "Servise deleted(false)"
+      flash[:danger] = "При видалені послуги виникла помилка."
     end
     redirect_to root_path
   end

@@ -1,23 +1,29 @@
-<hr>
+<div class="card text-center">
+  <div class="card-header">
+    <strong>Заголовок:</strong> <%= @article.title %>
+  </div>
+  <div class="card-body">
+    <p class="card-text lead">
+      <%= image_tag(@article.image_url(:thumb).to_s, class: "img-thumbnail float-right", style: "margin: 3px;") if @article.image? %>
+      <%= @article.text %>
+    </p>
+  </div>
+</div>
+<br>
+<%= link_to 'Повернутися до оголошень', articles_path, 
+    class: "btn btn-outline-secondary" %>
+
 <% if admin_signed_in? %>
-  <%= link_to 'Edit', edit_article_path(@article) %>
+  <%= link_to 'Редагувати', edit_article_path(@article), class: "btn btn-success" %>
+
+  <%= link_to 'Видалити', article_path(@article), class: "btn btn-danger", 
+  method: :delete, data: { confirm: 'Ви впевнені?' } %>
 <% end %>
-
-<p>
-  <strong>Title:</strong>
-  <%= @article.title %>
-</p>
-
-<%= image_tag(@article.image_url.to_s) if @article.image? %>
-
-<p>
-  <strong>Text:</strong>
-  <%= @article.text %>
-</p>
 <hr>
-
-<% if user_signed_in? %>
+<% if user_signed_in? || admin_signed_in? %>
   <%= render 'disqus' %>
+<% else %>
+  <p class="text-center lead">
+    <em><ins>Щоб залишати коментарі потрібно <%= link_to 'увійти', new_user_session_path %> до системи.</ins></em>
+  </p>
 <% end %>
-
-<%= link_to 'Back', articles_path %>

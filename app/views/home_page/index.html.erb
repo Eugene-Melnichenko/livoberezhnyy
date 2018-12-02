@@ -1,42 +1,89 @@
-<div class="container">
-  <div class="row">
-    <div id="carouselExampleControls" class="carousel slide carousel-fade" data-ride="carousel">
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img class="d-block w-100" src="http://www.bazi-otdiha.com.ua/uploads/1462905490.jpg" alt="First slide">
-          <div class="carousel-caption d-none d-md-block">
-            <h5>Third slide label</h5>
-            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <img class="d-block w-100" src="http://www.bazi-otdiha.com.ua/uploads/1400828169.jpg" alt="Second slide">
-        </div>
-        <div class="carousel-item">
-          <img class="d-block w-100" src="https://uahotels.info/cache/images/5/8/a/58a699d928416201acb73e5e3c031610.Baza-otdiha-Dneprovskaya-Zatoka-Zolotonoshskiy-r-n-s-Korobovka-ul-Naberezhnaya-80.jpg" alt="Third slide">
-        </div>
-        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
-      </div>
+<h3 class="text-center">БАЗА ВІДПОЧИНКУ «ЛІВОБЕРЕЖНИЙ»</h3>
+
+<p class="lead">Ця база відпочинку з мальовничим видом на Дніпро розташована на території Черкаської області, що в с. Леськи. Вона належить Лівобережному міжрайонному управлінню водного господарства.</p>
+<p class="lead">До послуг відпочиваючих тут, центр дозвілля, спортивні майданчики. Номери в корпусах на 2-3 особи з санвузлом, холодною та гарячою водою. До послуг гостей сауна та номери з безкоштовним Wi-Fi.</p>
+
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <%= image_tag("1.jpg", :alt => "rss feed", class: "d-block w-100 img-thumbnail " ) %>
+    </div>
+    <div class="carousel-item">
+      <%= image_tag("2.jpg", :alt => "rss feed", class: "d-block w-100 img-thumbnail" ) %>
+    </div>
+    <div class="carousel-item">
+      <%= image_tag("3.jpeg", :alt => "rss feed", class: "d-block w-100 img-thumbnail" ) %>
+    </div>
+    <div class="carousel-item">
+      <%= image_tag("4.jpeg", :alt => "rss feed", class: "d-block w-100 img-thumbnail" ) %>
+    </div>
+    <div class="carousel-item">
+      <%= image_tag("5.jpeg", :alt => "rss feed", class: "d-block w-100 img-thumbnail" ) %>
     </div>
   </div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
 </div>
 
+<p class="lead">Кожен номер бази відпочинку "Лівобережний" оформлений у класичному стилі та забезпечений ліжками, письмовим столом, стільцями. У столові бази відпочинку "Лівобережний" подають смачні страви місцевої української кухні. Попоїсти можна також на літній терасі, милуючись видом на околиці.</p>
 
+<p class="lead">Гості бази відпочинку "Лівобережний" матимуть змогу розслабитися в сауні або паровій лазні, а також пограти в більярд і настільний теніс, футбол, половити рибу. Під час оздоровчих змін проводяться спортивні змагання.</p>
+      
+<p class="lead">База відпочинку "Лівобережний" розміщена за 18 км від Черкас.</p>
+
+
+<h3 class="text-center">Останні новини</h3>
+<%= render @articles %>
+
+
+<h3 class="text-center">Послуги</h3>
+<ul>
+  <% @services.each do |service| %>
+    <li>
+      <strong><%= service.name %></strong>
+      <em>(<%= service.description %>)</em>
+    </li>
+  <% end %>
+</ul>
+
+
+<% if !user_signed_in? && !admin_signed_in?  %>
+  <%= link_to 'Щоб замовити послугу потрібно авторизуватися', users_product_orders_index_path, class: "btn btn-danger btn-block disabled" %>
+<% elsif user_signed_in? %> 
+  <%= link_to 'Замовити послугу', users_product_orders_index_path, class: "btn btn-primary btn-block" %>
+<% elsif admin_signed_in? %> 
+  <%= link_to 'Змінити/Додати/Видалити послуги', admins_dashboard_index_path, class: "btn btn-info btn-block" %>
+<% end %>
+
+
+
+
+<h3 class="text-center">Контактна інформація</h3>
 <div class="container">
   <div class="row">
-    <div class="col-12">
-      <h3 class="text-center">News articles</h3>
-      <hr>
-      <div class="row">
-        <%= render @articles %>
-      </div>
+    <div class="col-sm text-center">
+      <strong>Email:</strong> <%= @company.email %>
+    </div>
+    <div class="col-sm text-center">
+      <strong>Телефон:</strong> <%= @company.phone %>
     </div>
   </div>
+  <hr>
 </div>
+<div class="container">
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d167328.25163588361!2d31.962256011859825!3d49.46299113565941!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d6b1edd8f16f0d%3A0x263acfc8a8cd1752!2z0JHQu9Cw0LPQvtC00LDRgtC90L7QtSwg0KfQtdGA0LrQsNGB0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwsIDE5Nzc0!5e0!3m2!1sru!2sua!4v1543774394512" width="100%" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+</div>
+

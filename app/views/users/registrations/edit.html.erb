@@ -1,22 +1,56 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
-
+<h4 class="text-center"> Оновити свої особисті дані </h4>
 <div class="container">
   <%= devise_error_messages! %>
   <div class="row">
-    <div class="col-sm">
+    <div class="col-md-4 order-md-2 mb-4">
+      <ul class="list-group mb-3">
+        <li class="list-group-item d-flex justify-content-between lh-condensed">
+          <div>
+            <h6 class="my-0">Зареєстрований</h6>
+            <span class="text-muted">
+              <%= current_user.created_at.strftime("%d:%m:%Y") %>
+            </span>
+
+          </div>
+        </li>
+        <li class="list-group-item d-flex justify-content-between lh-condensed">
+          <div>
+            <h6 class="my-0">Останнє оновлення</h6>
+            <span class="text-muted">
+              <%= current_user.updated_at.strftime("%d:%m:%Y") %>
+            </span>
+          </div>
+        </li>
+        <li class="list-group-item d-flex justify-content-between lh-condensed">
+          <div>
+            <h6 class="my-0">Відвідувань сайту</h6>
+            <span class="text-muted">
+              Кількість:<%= current_user.sign_in_count %>
+            </span>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="col-md-8 order-md-1">
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-        <div class="form-group">
-          <%= f.label :first_name %>
-          <%= f.text_field :first_name, class: "form-control" %>
+        <div class="row">
+          <div class="col-6">
+            <div class="form-group">
+              <%= f.label 'Ім\'я' %>
+              <%= f.text_field :first_name, class: "form-control" %>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="form-group">
+              <%= f.label 'Прізвище' %>
+              <%= f.text_field :last_name, class: "form-control" %>
+            </div>
+          </div>
         </div>
 
         <div class="form-group">
-          <%= f.label :last_name %>
-          <%= f.text_field :last_name, class: "form-control" %>
-        </div>
-
-        <div class="form-group">
-          <%= f.label :email %>
+          <%= f.label 'Електронна адреса' %>
           <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
         </div>
 
@@ -25,38 +59,24 @@
         <% end %>
 
         <div class="form-group">
-          <%= f.label :password %> <i>(leave blank if you don't want to change it)</i>
+          <%= f.label 'Пароль' %> <i>(залиште поле порожнім, якщо ви його не змінили)</i>
           <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
           <% if @minimum_password_length %>
-            <em><%= @minimum_password_length %> characters minimum</em>
+            <em><%= @minimum_password_length %> символів мінімум</em>
           <% end %>
         </div>
 
         <div class="form-group">
-          <%= f.label :password_confirmation %>
+          <%= f.label 'Підтвердження паролю' %>
           <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
         </div>
 
         <div class="form-group">
-          <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i>
+          <%= f.label 'Поточний пароль' %> <i>(нам потрібен ваш поточний пароль, щоб підтвердити зміни)</i>
           <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control" %>
         </div>
-
-        <div class="row">
-            <div class="col-lg-8"></div>
-            <div class="col-lg-4 text-right">
-              <%= f.submit "Update", class: "btn btn-primary" %>
-            </div>
-        </div>
-
+        <%= f.submit "Оновити параметри", class: "btn btn-primary btn-block" %>
       <% end %>
-    </div>
-
-    <div class="col-sm">
-      <hr>
-      <strong>Created_at:</strong><%= current_user.created_at%>
-      <hr>
-      <strong>Updated_at:</strong><%= current_user.updated_at%>      
     </div>
   </div>
 </div>

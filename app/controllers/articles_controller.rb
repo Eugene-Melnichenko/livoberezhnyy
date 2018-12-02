@@ -20,7 +20,7 @@ class ArticlesController < ApplicationController
   def create
     @article = current_admin.articles.new(article_params)
     if @article.save
-      flash[:primary] = "Create article"
+      flash[:primary] = "Оголошення успішно створено."
       redirect_to @article
     else
       render 'new'
@@ -29,7 +29,7 @@ class ArticlesController < ApplicationController
 
   def update
     if @article.update(article_params)
-      flash[:primary] = "Update article"
+      flash[:primary] = "Оголошення успішно оновленно."
       redirect_to @article
     else
       render 'edit'
@@ -38,9 +38,9 @@ class ArticlesController < ApplicationController
 
   def destroy
     if @article.destroy
-      flash[:primary] = "Destroy article(true)"
+      flash[:primary] = "Оголошення успішно видалено."
     else
-      flash[:danger] = "Destroy article(false)"
+      flash[:danger] = "При видалені оголошення виникла помилка."
     end
     redirect_to articles_path
   end

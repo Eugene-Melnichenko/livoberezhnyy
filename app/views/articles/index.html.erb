@@ -1,17 +1,13 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
-      <h3 class="text-center">All articles</h3>
+      <h3 class="text-center">Усі оголошення</h3>
       <% if admin_signed_in? %>
-        <%= link_to 'New article', new_article_path, class: "btn btn-outline-info btn-lg" %>
+        <%= link_to 'Створити нове оголошення', new_article_path, class: "btn btn-outline-info btn-lg" %>
       <% end %>
       <hr>
     </div>
   </div>
 </div>
 
-<div class="container">
-  <div class="row">
-    <%= render @articles %>
-  </div>
-</div>
+<%= render @articles %>

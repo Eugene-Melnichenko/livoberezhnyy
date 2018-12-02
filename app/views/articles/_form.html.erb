@@ -2,21 +2,23 @@
 
   <%= render 'layouts/error_messages', object: @article %>
 
-  <p>
-    <%= form.label :title %><br>
-    <%= form.text_field :title %>
-  </p>
+  <div class="form-group">
+    <label>Заголовок</label>
+    <%= form.text_field :title, class: "form-control"  %>
+  </div>
 
-  <p>
-    <%= form.label :text %><br>
-    <%= form.text_area :text %>
-  </p>
+  <div class="form-group">
+    <label>Текст оголошення</label>
+    <%= form.text_area :text, class: "form-control", rows: "4" %>
+  </div>
 
-  <p>
-    <%= form.file_field :image %>
-  </p>
-
-  <p>
-    <%= form.submit %>
+  <div class="form-group">
+    <%= form.file_field :image, value: "Choose a file" %>
+  </div>
+  <%= image_tag(@article.image_url.to_s, class: "img-fluid img-thumbnail") if @article.image? %>
+  </div>
+  <br>
+  <p class="text-center">
+    <%= form.submit button_text %>
   </p>
 <% end %>

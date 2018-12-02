@@ -1,0 +1,34 @@
+<h3 class="text-center">Усі послуги на базі відпочинку «ЛІВОБЕРЕЖНИЙ»</h3>
+
+
+
+
+
+
+
+
+
+
+<table class="table table-bordered table-hover">
+  <thead>
+    <tr class="text-center">
+      <th scope="col">Назва</th>
+      <th scope="col">Опис</th>
+      <th scope="col">Ціна</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @services.each do |service| %>
+      <tr>
+        <td class="text-center">
+          <strong><%= service.name %></strong>
+        </td>
+        <td><em><%= service.description %></em></td>
+        <td><%= service.price %></td>
+        <td class="text-center" >
+          <%= link_to 'Замовити',root_path, class: "btn-outline-primary btn-sm" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
