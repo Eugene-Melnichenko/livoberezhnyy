@@ -1,0 +1,13 @@
+ua:
+  activerecord:
+    models:
+      article: 'Оголошення'
+      service: 'Послуга'
+    attributes:
+      article:
+        title: 'Заголовок'
+        text: 'Текст оголошення'
+      service:
+        name: 'Назва'
+        description: 'Опис'
+        price: 'Ціна'

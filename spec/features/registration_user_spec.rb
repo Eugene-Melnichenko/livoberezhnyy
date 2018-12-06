@@ -10,8 +10,7 @@ RSpec.feature "Registration new user", type: :feature do
       fill_in 'user_password',              with: 'password'
       fill_in 'user_password_confirmation', with: 'password'
       click_button 'Зареєструватися'
-      expect(page).to have_text("A message with a confirmation link has been sent to your email address.") 
-      expect(page).to have_text("Please follow the link to activate your account.")
+      expect(page).to have_text("Протягом декількох хвилин ви отримаєте лист з інструкціями з підтвердження вашого облікового запису.") 
     end
   end
 
@@ -20,14 +19,14 @@ RSpec.feature "Registration new user", type: :feature do
       visit new_user_registration_path
       fill_in 'user_first_name', with: "a" * 21
       click_button 'Зареєструватися'
-      expect(page).to have_text("First name is too long (maximum is 20 characters)")
+      expect(page).to have_text("First name занадто довгий (максимум 20 символів)")
     end
 
     it "Invalid last_name" do
       visit new_user_registration_path
       fill_in 'user_last_name', with: "a" * 21
       click_button 'Зареєструватися'
-      expect(page).to have_text("Last name is too long (maximum is 20 characters)")
+      expect(page).to have_text("Last name занадто довгий (максимум 20 символів)")
     end
   end
 

@@ -70,7 +70,9 @@
 
 
 
-<% if !Company.count %>
+<% if Company.count == 0 %>
+  <h5 class="text-danger text-center">Увага! Компанія не стоврена, зв'яжіться з адміністраторном</h3>
+<% else %>
   <h3 class="text-center">Контактна інформація</h3>
   <div class="container">
     <div class="row">

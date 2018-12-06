@@ -32,6 +32,7 @@ module Livoberezhnyy
 
     config.i18n.default_locale = :ua
     config.i18n.locale = :ua
+    config.time_zone = 'Europe/Kiev'
     
   end
 end

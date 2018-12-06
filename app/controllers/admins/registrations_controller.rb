@@ -17,9 +17,11 @@ class Admins::RegistrationsController < Devise::RegistrationsController
   # end
 
   # GET /resource/edit
-  # def edit
-  #   super
-  # end
+  def edit
+    @users_active_count = User.where.not(confirmed_at: nil).count
+    @users_deactive_count = User.where(confirmed_at: nil).count
+    super
+  end
 
   # PUT /resource
   # def update

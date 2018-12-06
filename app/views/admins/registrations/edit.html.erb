@@ -1,37 +1,86 @@
-<h1><%= t('.title', resource: resource_name.to_s.humanize) %></h1>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+<h4 class="text-center"> Оновити дані Адміністратора </h4>
+<div class="container">
   <%= devise_error_messages! %>
+  <div class="row">
+    <div class="col-md-4 order-md-2 mb-4">
+      <ul class="list-group mb-3">
+        <li class="list-group-item d-flex justify-content-between lh-condensed">
+          <div>
+            <h6 class="my-0">Зареєстрований</h6>
+            <span class="text-muted">
+              <%= current_admin.created_at.strftime("%d:%m:%Y") %>
+            </span>
 
-  <div class="form-group">
-    <%= f.label :email %>
-    <%= f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control' %>
+          </div>
+        </li>
+        <li class="list-group-item d-flex justify-content-between lh-condensed">
+          <div>
+            <h6 class="my-0">Останнє оновлення</h6>
+            <span class="text-muted">
+              <%= current_admin.updated_at.strftime("%d:%m:%Y") %>
+            </span>
+          </div>
+        </li>
+      </ul>
+
+      <ul class="list-group mb-3">
+        <li class="list-group-item d-flex justify-content-between lh-condensed">
+          <div>
+            <h6 class="my-0"><strong>Користувачів</strong></h6>
+            <span class="text-success">
+              Активованих <%= @users_active_count %>
+            </span>
+            <br>
+            <span class="text-danger ">
+              Деактивних <%= @users_deactive_count %>
+            </span>
+
+          </div>
+        </li>
+        <li class="list-group-item d-flex justify-content-between lh-condensed">
+          <div>
+            <h6 class="my-0">
+              Кількість новин <%= Article.count %>
+            </h6>       
+          </div>
+        </li>
+        <li class="list-group-item d-flex justify-content-between lh-condensed">
+          <div>
+            <h6 class="my-0">
+             Кількість послуг <%= Service.count %>
+            </h6>       
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="col-md-8 order-md-1">
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+
+        <div class="form-group">
+          <%= f.label 'Електронна адреса' %>
+          <%= f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control' %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label 'Пароль' %> <i>(залиште поле порожнім, якщо ви його не змінили)</i>
+          <%= f.password_field :password, autocomplete: 'new-password', class: 'form-control' %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label 'Підтвердження паролю' %>
+          <%= f.password_field :password_confirmation, autocomplete: 'new-password', class: 'form-control'  %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label 'Поточний пароль' %> <i>(нам потрібен ваш поточний пароль, щоб підтвердити зміни)</i>
+          <%= f.password_field :current_password, autocomplete: 'current-password', class: 'form-control' %>
+        </div>
+
+        <div class="form-group">
+        <%= f.submit "Оновити параметри адміністратора", class: "btn btn-primary btn-block" %>
+        </div>
+      <% end %>
+    </div>
   </div>
-
-  <div class="form-group">
-    <%= f.label :password %>
-    <%= f.password_field :password, autocomplete: 'new-password', class: 'form-control' %>
-
-    <small class="form-text text-muted"><%= t('.leave_blank_if_you_don_t_want_to_change_it') %></small>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation, autocomplete: 'new-password', class: 'form-control'  %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :current_password %>
-    <%= f.password_field :current_password, autocomplete: 'current-password', class: 'form-control' %>
-
-    <small class="form-text text-muted"><%= t('.we_need_your_current_password_to_confirm_your_changes') %></small>
-  </div>
-
-  <div class="form-group">
-    <%= f.submit "Update", class: 'btn btn-primary' %>
-  </div>
-<% end %>
-
-<p><%= t('.unhappy') %>? <%= link_to t('.cancel_my_account'), registration_path(resource_name), data: { confirm: t('.are_you_sure') }, method: :delete %>.</p>
-
-<%= link_to t('.back'), :back %>
+</div>

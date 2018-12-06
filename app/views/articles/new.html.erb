@@ -1,5 +1,7 @@
-<h3 class="text-center">Створити нове оголошення</h3>
+<div class="container">
+  <h3 class="text-center"><%= t('article.new.title') %></h3>
 
-<%= render 'form', button_text: "Зберегти нове оголошення" %>
+  <%= render 'form', button_text: "Зберегти нове оголошення" %>
 
-<%= link_to 'Повернутися до оголошень', articles_path, class: "btn btn-outline-secondary" %>
+  <%= link_to 'Повернутися до оголошень', articles_path, class: "btn btn-outline-secondary" %>
+</div>

@@ -2,8 +2,8 @@
   <div id="error_explanation" class="alert alert-danger">
     <a href="#" data-dismiss="alert" class="close">×</a>
     <h4>
-      <%= pluralize(object.errors.count, "error") %> prohibited
-      this object from being saved:
+      <!-- <%= pluralize(object.errors.count, "error") %> prohibitedthis object from being saved: -->
+      <%= t('common.errors') %> 
     </h4>
     <ul>
       <% object.errors.full_messages.each do |msg| %>
