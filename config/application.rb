@@ -29,5 +29,9 @@ module Livoberezhnyy
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    config.i18n.default_locale = :ua
+    config.i18n.locale = :ua
+    
   end
 end
