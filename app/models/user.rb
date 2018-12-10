@@ -5,4 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :trackable
 
   validates :first_name, :last_name, length: { maximum: 20 }
+
+  has_many :orders
+  has_many :services, through: :orders
 end

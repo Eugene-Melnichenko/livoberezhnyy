@@ -11,6 +11,7 @@ class Admins::ServicesController < ApplicationController
   end
 
   def new
+    @services = Service.order(created_at: :desc).all
     @service = Service.new
   end
 

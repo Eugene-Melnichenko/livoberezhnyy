@@ -21,7 +21,7 @@
       <td class="table-danger"><%= @users_deactive_count %></td>
       <td><%= @articles_count %></td>
       <td><%= @services_count %></td>
-      <td>100</td>
+      <td><%= @orders_count %></td>
     </tr>
   </tbody>
 </table>
@@ -67,7 +67,7 @@
 
 
 
-<h3 class="text-center">Наші послуги</h3>
+<h3 class="text-center">Усі послуги</h3>
 <p>
 <%= link_to 'Cтворити нову послугу', new_admins_service_path, class: "btn btn-primary btn-block" %>
 </p>

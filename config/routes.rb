@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :users do
-    get 'product_orders/index'
-  end
-
   devise_for :users, path: 'users', controllers: { 
     sessions: "users/sessions",
     registrations: "users/registrations",
@@ -28,7 +24,7 @@ Rails.application.routes.draw do
   end
 
   namespace :users do
-    resources :product_order
+    resources :orders
   end
 
   resources :home_page, only: [:index]

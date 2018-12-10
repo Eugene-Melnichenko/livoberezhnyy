@@ -15,6 +15,14 @@
         </li>
         <li class="list-group-item d-flex justify-content-between lh-condensed">
           <div>
+            <h6 class="my-0">Кількість замовлень</h6>
+            <span class="text-muted">
+              <%= Order.where(user_id: current_user).count %>
+            </span>
+          </div>
+        </li>
+        <li class="list-group-item d-flex justify-content-between lh-condensed">
+          <div>
             <h6 class="my-0">Останнє оновлення</h6>
             <span class="text-muted">
               <%= current_user.updated_at.strftime("%d:%m:%Y") %>
