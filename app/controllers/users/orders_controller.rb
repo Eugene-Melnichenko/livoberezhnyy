@@ -1,6 +1,6 @@
 class Users::OrdersController < ApplicationController
-  def index
-  end
+  before_action :authenticate_user!
+  before_action :set_order, only: [:destroy] 
 
   def new
     @order     = Order.new
@@ -13,13 +13,12 @@ class Users::OrdersController < ApplicationController
     if @order.save
       flash[:primary] = "Замовлення успішно створено."
     else
-      raise @order.inspect  
+      flash[:danger] = "Щоб стоврити замовлення, потріьно виберіти послугу."
     end
     redirect_to new_users_order_path
   end
 
   def destroy
-    @order = Order.find(params[:id])
     if @order.destroy
       flash[:primary] = "Замовлення успішно видалено."
     else
@@ -29,6 +28,10 @@ class Users::OrdersController < ApplicationController
   end
 
   private
+
+  def set_order
+    @order = Order.find(params[:id])
+  end
 
   def order_params
     params.require(:order).permit(:message, :service_id)

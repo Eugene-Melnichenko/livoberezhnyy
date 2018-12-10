@@ -7,6 +7,7 @@ RSpec.describe Article, type: :model do
   it { should be_valid}
   it { should respond_to(:title) }
   it { should respond_to(:text) }
+  it { should respond_to(:image) }
 
   describe "Associations" do
     it { should belong_to(:admin) }

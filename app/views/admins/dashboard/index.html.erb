@@ -11,7 +11,7 @@
       <th scope="col" >Деактивних</th>
       <th scope="col">Оголошень</th>
       <th scope="col">Послуг і розваг</th>
-      <th scope="col">Замолень</th>
+      <th scope="col">Замовлень</th>
     </tr>
   </thead>
   <tbody>
@@ -99,3 +99,30 @@
   </tbody>
 </table>
 <%= will_paginate @services, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+
+
+<h3 class="text-center">Усі Замовлення</h3>
+<table class="table table-bordered table-hover">
+  <thead class="thead-dark">
+    <tr class="text-center">
+      <th scope="col">Користувачі</th>
+      <th scope="col">Послуги</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @orders.each do |order| %>
+      <tr>
+        <td>
+          <strong><%= order.user.first_name %> <%= order.user.last_name %></strong>
+        </td>
+        <td><em><%= order.service.name %>(<%= order.service.price %>)</em></td>
+        <td class="text-center" >
+          <!--ДОПРАЦЮВАТИ, написати контроллер-->
+          <%= link_to 'Видалити', users_order_path(order), method: :delete, data: { confirm: 'Ви впевнені?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= will_paginate @orders, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>

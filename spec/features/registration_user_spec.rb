@@ -15,18 +15,11 @@ RSpec.feature "Registration new user", type: :feature do
   end
 
   describe "Invalid registration user" do
-    it "Invalid first_name" do
-      visit new_user_registration_path
-      fill_in 'user_first_name', with: "a" * 21
-      click_button 'Зареєструватися'
-      expect(page).to have_text("First name занадто довгий (максимум 20 символів)")
-    end
-
     it "Invalid last_name" do
       visit new_user_registration_path
       fill_in 'user_last_name', with: "a" * 21
       click_button 'Зареєструватися'
-      expect(page).to have_text("Last name занадто довгий (максимум 20 символів)")
+      expect(page).to have_text("Last name - це поле занадто довге (максимум 20 символів)")
     end
   end
 

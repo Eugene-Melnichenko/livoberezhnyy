@@ -19,12 +19,12 @@ Rails.application.routes.draw do
 
   namespace :admins do
     get 'dashboard/index'
-    resources :services
+    resources :services, except: [:show]
     resources :users, only: [:destroy]
   end
 
   namespace :users do
-    resources :orders
+    resources :orders, only: [:new, :create, :destroy]
   end
 
   resources :home_page, only: [:index]

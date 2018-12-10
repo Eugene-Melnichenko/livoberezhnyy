@@ -7,9 +7,6 @@ class Admins::ServicesController < ApplicationController
     redirect_to root_path
   end
 
-  def show
-  end
-
   def new
     @services = Service.order(created_at: :desc).all
     @service = Service.new
@@ -22,7 +19,7 @@ class Admins::ServicesController < ApplicationController
     @service = Service.new(service_params)
     if @service.save
       flash[:primary] = "Послуга успіно додана."
-      redirect_to root_path
+      redirect_to new_admins_service_path
     else
       render 'new'
     end
@@ -31,7 +28,7 @@ class Admins::ServicesController < ApplicationController
   def update
     if @service.update(service_params)
       flash[:primary] = "Послуга успіно оновленна."
-      redirect_to root_path
+      redirect_to new_admins_service_path
     else
       render 'edit'
     end
@@ -43,7 +40,7 @@ class Admins::ServicesController < ApplicationController
     else
       flash[:danger] = "При видалені послуги виникла помилка."
     end
-    redirect_to root_path
+    redirect_to new_admins_service_path
   end
 
   private

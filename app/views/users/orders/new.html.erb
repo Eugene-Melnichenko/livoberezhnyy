@@ -39,6 +39,8 @@
 <h3 class="text-center">Замовити нову послугу</h3>
 <%= form_with model: @order, url: users_orders_path, local: true do |form| %>
 
+  <%= render 'layouts/error_messages', object: @order %>
+
   <div class="form-group">
     <%= form.label 'Виберіть послугу', class: "font-weight-bold" %>
     <%= form.collection_select :service_id, @services, :id, :name, { include_blank: true }, class: "form-control" %>

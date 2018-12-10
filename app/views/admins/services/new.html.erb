@@ -4,32 +4,4 @@
   <%= render 'form', adress_url: admins_services_path, 
                      button_text: "Зберегти нову послугу" %>
 
-  <h3 class="text-center">Усі послуги</h3>
-  <table class="table table-bordered table-hover">
-  <thead class="thead-dark">
-    <tr class="text-center">
-      <th scope="col">Назва</th>
-      <th scope="col">Опис</th>
-      <th scope="col">Ціна</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @services.each do |service| %>
-      <tr>
-        <td class="text-center">
-          <strong><%= service.name %></strong>
-        </td>
-        <td><em><%= service.description %></em></td>
-        <td><%= service.price %></td>
-        <td class="text-center" >
-          <%= link_to "Видалити", admins_service_path(service), method: :delete, data: { confirm: "Ви впевнені?" }, 
-            class: "btn-outline-danger btn-sm" %>
-          <%= link_to 'Редагувати', edit_admins_service_path(service),
-            class: "btn-outline-info btn-sm" %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 </div>

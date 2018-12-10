@@ -1,6 +1,7 @@
 FactoryBot.define do
   factory :order do
-    user { nil }
-    service { nil }
+    user
+    service
+    message { "My Message" }
   end
 end
